@@ -1,0 +1,195 @@
+db.createCollection("authors");
+db.createCollection("books");
+db.createCollection("author_book");
+
+db.Books.insertMany([
+  {
+    "_id": ObjectId(),
+    "name": "1984",
+    "pub": ObjectId(), // Replace with a valid publisher ObjectId
+    "isbn": "978-0451524935",
+    "authors": [ObjectId()], // Replace with a valid author ObjectId
+    "category": "Dystopian",
+    "price": 15.99,
+    "status": "Available"
+  },
+  {
+    "_id": ObjectId(),
+    "name": "Brave New World",
+    "pub": ObjectId(), // Replace with a valid publisher ObjectId
+    "isbn": "978-0060850524",
+    "authors": [ObjectId()], // Replace with a valid author ObjectId
+    "category": "Science Fiction",
+    "price": 12.99,
+    "status": "Available"
+  },
+  {
+    "_id": ObjectId(),
+    "name": "Harry Potter and the Sorcerer's Stone",
+    "pub": ObjectId(), // Replace with a valid publisher ObjectId
+    "isbn": "978-0439708180",
+    "authors": [ObjectId()], // Replace with a valid author ObjectId
+    "category": "Fantasy",
+    "price": 10.99,
+    "status": "Checked Out"
+  },
+  {
+    "_id": ObjectId(),
+    "name": "The Great Gatsby",
+    "pub": ObjectId(), // Replace with a valid publisher ObjectId
+    "isbn": "978-0743273565",
+    "authors": [ObjectId()], // Replace with a valid author ObjectId
+    "category": "Classic",
+    "price": 13.99,
+    "status": "Available"
+  },
+  {
+    "_id": ObjectId(),
+    "name": "To Kill a Mockingbird",
+    "pub": ObjectId(), // Replace with a valid publisher ObjectId
+    "isbn": "978-0061120084",
+    "authors": [ObjectId()], // Replace with a valid author ObjectId
+    "category": "Classic",
+    "price": 14.99,
+    "status": "Available"
+  },
+  {
+    "_id": ObjectId(),
+    "name": "The Hobbit",
+    "pub": ObjectId(), // Replace with a valid publisher ObjectId
+    "isbn": "978-0547928227",
+    "authors": [ObjectId()], // Replace with a valid author ObjectId
+    "category": "Fantasy",
+    "price": 11.99,
+    "status": "Checked Out"
+  },
+  {
+    "_id": ObjectId(),
+    "name": "The Old Man and the Sea",
+    "pub": ObjectId(), // Replace with a valid publisher ObjectId
+    "isbn": "978-0684801223",
+    "authors": [ObjectId()], // Replace with a valid author ObjectId
+    "category": "Classic",
+    "price": 9.99,
+    "status": "Available"
+  },
+  {
+    "_id": ObjectId(),
+    "name": "Pride and Prejudice",
+    "pub": ObjectId(), // Replace with a valid publisher ObjectId
+    "isbn": "978-1503290563",
+    "authors": [ObjectId()], // Replace with a valid author ObjectId
+    "category": "Classic",
+    "price": 7.99,
+    "status": "Available"
+  },
+  {
+    "_id": ObjectId(),
+    "name": "The Catcher in the Rye",
+    "pub": ObjectId(), // Replace with a valid publisher ObjectId
+    "isbn": "978-0316769488",
+    "authors": [ObjectId()], // Replace with a valid author ObjectId
+    "category": "Classic",
+    "price": 8.99,
+    "status": "Available"
+  },
+  {
+    "_id": ObjectId(),
+    "name": "Fahrenheit 451",
+    "pub": ObjectId(), // Replace with a valid publisher ObjectId
+    "isbn": "978-1451673319",
+    "authors": [ObjectId()], // Replace with a valid author ObjectId
+    "category": "Dystopian",
+    "price": 10.99,
+    "status": "Available"
+  }
+]);
+
+
+db.authors.insertMany([
+  {
+    "_id": ObjectId("64fdadf4b4c64e0012345701"),
+    "name": "George Orwell",
+    "address": "Motihari, India",
+    "email": "george.orwell@example.com",
+    "phone": "555-1234"
+  },
+  {
+    "_id": ObjectId("64fdadf4b4c64e0012345702"),
+    "name": "Aldous Huxley",
+    "address": "Los Angeles, California",
+    "email": "aldous.huxley@example.com",
+    "phone": "555-5678"
+  },
+  {
+    "_id": ObjectId("64fdadf4b4c64e0012345703"),
+    "name": "J.K. Rowling",
+    "address": "Edinburgh, Scotland",
+    "email": "jk.rowling@example.com",
+    "phone": "555-9876"
+  },
+  {
+    "_id": ObjectId("64fdadf4b4c64e0012345704"),
+    "name": "F. Scott Fitzgerald",
+    "address": "St. Paul, Minnesota",
+    "email": "f.scott.fitzgerald@example.com",
+    "phone": "555-4444"
+  }
+]);
+
+// Insert sample documents for books
+db.books.insertMany([
+  {
+    "_id": ObjectId("64fdadf4b4c64e0012345801"),
+    "title": "1984",
+    "isbn": "978-0451524935",
+    "category": "Dystopian",
+    "price": 15.99,
+    "status": "Available"
+  },
+  {
+    "_id": ObjectId("64fdadf4b4c64e0012345802"),
+    "title": "Brave New World",
+    "isbn": "978-0060850524",
+    "category": "Science Fiction",
+    "price": 12.99,
+    "status": "Available"
+  },
+  {
+    "_id": ObjectId("64fdadf4b4c64e0012345803"),
+    "title": "Harry Potter and the Sorcerer's Stone",
+    "isbn": "978-0439708180",
+    "category": "Fantasy",
+    "price": 10.99,
+    "status": "Checked Out"
+  },
+  {
+    "_id": ObjectId("64fdadf4b4c64e0012345804"),
+    "title": "The Great Gatsby",
+    "isbn": "978-0743273565",
+    "category": "Classic",
+    "price": 13.99,
+    "status": "Available"
+  }
+]);
+
+// Insert sample documents for author-book relationships
+db.author_book.insertMany([
+  {
+    "author_id": ObjectId("64fdadf4b4c64e0012345701"), // George Orwell
+    "book_id": ObjectId("64fdadf4b4c64e0012345801")  // 1984
+  },
+  {
+    "author_id": ObjectId("64fdadf4b4c64e0012345702"), // Aldous Huxley
+    "book_id": ObjectId("64fdadf4b4c64e0012345802")  // Brave New World
+  },
+  {
+    "author_id": ObjectId("64fdadf4b4c64e0012345703"), // J.K. Rowling
+    "book_id": ObjectId("64fdadf4b4c64e0012345803")  // Harry Potter and the Sorcerer's Stone
+  },
+  {
+    "author_id": ObjectId("64fdadf4b4c64e0012345704"), // F. Scott Fitzgerald
+    "book_id": ObjectId("64fdadf4b4c64e0012345804")  // The Great Gatsby
+  }
+]);
+
